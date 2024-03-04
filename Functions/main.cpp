@@ -7,6 +7,7 @@ int Prod(int a, int b);
 double Quote(int a, int b);
 double Faktorial1(int a);
 double Faktorial2(int b);
+double Stepen(int a, int b);
 void main() {
 	setlocale(LC_ALL, "");
 	int a, b;
@@ -18,6 +19,19 @@ void main() {
 	cout << a << " / " << b << " = " <<Quote(a,b) << endl;
 	cout << "‘актрориал числа " << a << "\n" << Faktorial1(a) << endl;
 	cout << "‘актрориал числа " << b << "\n" << Faktorial2(b) << endl;
+	cout << "¬озводим число " << a << "в степень" << b << "\n" << "получаем" << "\n" << Stepen(a, b) << endl;
+}
+double Stepen(int a, int b) {
+	double STep=1;//a ----- число возводимое в с тепень
+	//b ------ степень в которую возводим чесло
+	if (b < 0) {
+		a = 1 / a;
+		b = -b;
+	}
+	int i = 0;
+	for (i; i < b; i++) {
+		STep *= a;
+	}return STep;
 }
 int Sum(int a, int b) {
 	int c = a + b;
