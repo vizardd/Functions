@@ -1,4 +1,4 @@
-#include<iostream>
+ï»¿#include<iostream>
 using namespace std;
 
 int Sum(int a, int b);
@@ -11,19 +11,19 @@ double Stepen(int a, int b);
 void main() {
 	setlocale(LC_ALL, "");
 	int a, b;
-	cout << "ââåäèòå äâà ÷èñëà: "; cin >> a >> b;
+	cout << "Ð²Ð²ÐµÐ´Ð¸Ñ‚Ðµ Ð´Ð²Ð° Ñ‡Ð¸ÑÐ»Ð°: "; cin >> a >> b;
 	int c = Sum(a, b);
 	cout << a << " + " << b << " = " << c << endl;
 	cout << a << " - " << b << " = " <<Diff(a,b) << endl;
 	cout << a << " * " << b << " = " <<Prod(a,b) << endl;
 	cout << a << " / " << b << " = " <<Quote(a,b) << endl;
-	cout << "Ôàêòðîðèàë ÷èñëà " << a << "\n" << Faktorial1(a) << endl;
-	cout << "Ôàêòðîðèàë ÷èñëà " << b << "\n" << Faktorial2(b) << endl;
-	cout << "Âîçâîäèì ÷èñëî " << a << "â ñòåïåíü" << b << "\n" << "ïîëó÷àåì" << "\n" << Stepen(a, b) << endl;
+	cout << "Ð¤Ð°ÐºÑ‚Ñ€Ð¾Ñ€Ð¸Ð°Ð» Ñ‡Ð¸ÑÐ»Ð° " << a << "\n" << Faktorial1(a) << endl;
+	cout << "Ð¤Ð°ÐºÑ‚Ñ€Ð¾Ñ€Ð¸Ð°Ð» Ñ‡Ð¸ÑÐ»Ð° " << b << "\n" << Faktorial2(b) << endl;
+	cout << "Ð’Ð¾Ð·Ð²Ð¾Ð´Ð¸Ð¼ Ñ‡Ð¸ÑÐ»Ð¾ " << a << "Ð² ÑÑ‚ÐµÐ¿ÐµÐ½ÑŒ" << b << "\n" << "Ð¿Ð¾Ð»ÑƒÑ‡Ð°ÐµÐ¼" << "\n" << Stepen(a, b) << endl;
 }
 double Stepen(int a, int b) {
-	double STep=1;//a ----- ÷èñëî âîçâîäèìîå â ñ òåïåíü
-	//b ------ ñòåïåíü â êîòîðóþ âîçâîäèì ÷åñëî
+	double STep=1;//a ----- Ñ‡Ð¸ÑÐ»Ð¾ Ð²Ð¾Ð·Ð²Ð¾Ð´Ð¸Ð¼Ð¾Ðµ Ð² Ñ Ñ‚ÐµÐ¿ÐµÐ½ÑŒ
+	//b ------ ÑÑ‚ÐµÐ¿ÐµÐ½ÑŒ Ð² ÐºÐ¾Ñ‚Ð¾Ñ€ÑƒÑŽ Ð²Ð¾Ð·Ð²Ð¾Ð´Ð¸Ð¼ Ñ‡ÐµÑÐ»Ð¾
 	if (b < 0) {
 		a = 1 / a;
 		b = -b;
