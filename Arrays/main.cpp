@@ -8,7 +8,7 @@ void Sum(int arr[], const int n);
 void Avg(int arr[], const int n);
 void minValueIn(int arr[], const int n);
 void maxValueIn(int arr[], const int n);
-
+void shiftLeft(int arr[], const int n, int number_of_shifts);
 void main() {
 	setlocale(LC_ALL, "");
 	const int n = 5;
@@ -34,6 +34,9 @@ void main() {
 	Avg(arr,n);
 	minValueIn(arr, n);
 	maxValueIn(arr, n);
+	int number_of_shifts;
+	cout << "На сколько элементов сдвинуть масив :"; cin >> number_of_shifts;
+	shiftLeft(arr, n, number_of_shifts);
 }
 int FillRand(int minRand, int maxRand) {
 	return minRand + rand() % (maxRand - minRand);
@@ -69,4 +72,14 @@ void maxValueIn(int arr[], const int n) {
 		if(arr[i] > Max) Max = arr[i];
 	}
 	cout << "Максимальный елемент = " << Max << endl;
+}
+void shiftLeft(int arr[], const int n, int number_of_shifts) {
+	for (int i = 0; i < number_of_shifts; i++) {
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++) {
+			arr[i] = arr[i + 1];
+		}	arr[n - 1] = buffer;
+		for (int i = 0; i < n; i++)cout << arr[i] << "\t";
+		cout << endl;
+	}
 }
