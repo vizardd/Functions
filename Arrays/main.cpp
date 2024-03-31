@@ -11,8 +11,8 @@ void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);//за
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
 void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
 void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRend = 100);
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRend = 100);
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRend = 100);
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, double minRand = 0, double maxRend = 100);
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, char minRand = 0, char maxRend = 100);
 
 void Print(const int arr[], const int n);
 void Print(const double arr[], const int n);
@@ -73,11 +73,12 @@ void main() {
 	double d_arr[D_SIZE];
 	FillRand(d_arr, D_SIZE);
 	Print(d_arr, D_SIZE);
+
 	cout << delimeter << endl;
 
 	const int ROWS = 3;
 	const int COLS = 4;
-	int i_arr_2[ROWS][COLS];
+	double i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Сума елементов масива: " << Sum(i_arr_2, ROWS,COLS) << endl;
@@ -131,14 +132,14 @@ void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand ,
 		}
 	}
 }
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRend) {
+void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, double minRand, double maxRend) {
 	for (int i = 0; i < ROWS; i++) {
 		for (int j = 0; j < COLS; j++) {
 			arr[i][j] = rand() % 100;
 		}
 	}
 }
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRend) {
+void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, char minRand, char maxRend) {
 	for (int i = 0; i < ROWS; i++) {
 		for (int j = 0; j < COLS; j++) {
 			arr[i][j] = rand() % 100;
@@ -253,13 +254,13 @@ char AVG(const char arr[], const int n) {
 	return (double)Sum(arr, n) / n;
 }
 int AVG(const int arr[ROWS][COLS], const int ROWS, const int COLS) {
-	return (double)Sum(arr, ROWS, COLS) / (ROWS* COLS);
+	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
 }
 double AVG(const double arr[ROWS][COLS], const int ROWS, const int COLS) {
-	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
 }
 char AVG(const char arr[ROWS][COLS], const int ROWS, const int COLS) {
-	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
 }
 
 int minValueIn(int arr[], const int n){
