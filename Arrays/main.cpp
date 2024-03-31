@@ -2,84 +2,184 @@
 using namespace std;
 
 #define tab "\t"
-int FillRand(int minRand, int maxRand);//заполняем массив случайными числами 
-void Print(int arr[], const int n);
-void Sum(int arr[], const int n);
-void Avg(int arr[], const int n);
-void minValueIn(int arr[], const int n);
-void maxValueIn(int arr[], const int n);
-void shiftLeft(int arr[], const int n, int number_of_shifts);
+void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
+void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
+void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
+
+void Print(const int arr[], const int n);
+void Print(const double arr[], const int n);
+void Print(const char arr[], const int n);
+
+int Sum(const int arr[], const int n);
+double Sum(const double arr[], const int n);
+char Sum(const char arr[], const int n);
+
+int AVG(const int arr[], const int n);
+double AVG(const double arr[], const int n);
+char AVG(const char arr[], const int n);
+
+int minValueIn(int arr[], const int n);
+double minValueIn(double arr[], const int n);
+char minValueIn(char arr[], const int n);
+
+int maxValueIn(int arr[], const int n);
+double maxValueIn(double arr[], const int n);
+char maxValueIn(char arr[], const int n);
+
 void main() {
 	setlocale(LC_ALL, "");
 	const int n = 5;
 	int arr[n];
 	int minRand, maxRand;
-	do
-	{
-		cout << "Введите Минимально возможное случайное число: "; cin >> minRand;
-		cout << "Введите Максимально возможное случайное число: "; cin >> maxRand;
-		if (minRand == maxRand)cout << "пределы диапазона не должны совпадать" << endl;
-	} while (minRand==maxRand);
+	///*do//{
+	//	cout << "Введите Минимально возможное случайное число: "; cin >> minRand;
+	//	cout << "Введите Максимально возможное случайное число: "; cin >> maxRand;
+	//	if (minRand == maxRand)cout << "пределы диапазона не должны совпадать" << endl;
+	//} while (minRand==maxRand);*/
+	FillRand(arr, n);
+	Print(arr, n);
+	cout << "Сума елементов масива: " << Sum(arr, n) << endl;
+	cout << "Средне арефметическое элементов масива: " << AVG(arr, n) << endl;
+	cout << "Минелальное значение масива :" << minValueIn(arr, n)<<endl;
+	cout << "Максимальный елемент масива: " << maxValueIn(arr, n)<<endl;
+	int number_of_shifts;
+	const int m = 8;
+	double d_arr[m];
+	FillRand(d_arr, m);
+	Print(d_arr, m);
+}
+void FillRand(int arr[], const int n, int minRand, int maxRand) {
 	if (maxRand < minRand) {
 		int buffer = minRand;
 		minRand = maxRand;
 		maxRand = buffer;
 	}
 	for (int i = 0; i < n; i++) {
-		arr[i] = FillRand(minRand, maxRand);
-	}
-	Print(arr, n);
-	cout << endl;
-	Sum(arr, n);
-	Avg(arr,n);
-	minValueIn(arr, n);
-	maxValueIn(arr, n);
-	int number_of_shifts;
-	cout << "На сколько элементов сдвинуть масив :"; cin >> number_of_shifts;
-	shiftLeft(arr, n, number_of_shifts);
-}
-int FillRand(int minRand, int maxRand) {
-	return minRand + rand() % (maxRand - minRand);
-}
-void Print(int arr[], const int n) {
-	 for (int i = 0; i < n; i++) {
-		 cout << arr[i] << tab;
+		arr[i] = minRand + rand() % (maxRand - minRand);
 	}
 }
-void Sum(int arr[], const int n) {
-	int sum = 0;
+void FillRand(double arr[], const int n, int minRand, int maxRand)
+{
+	if (maxRand < minRand) {
+		double buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	minRand *= 100;
+	maxRand *= 100;
 	for (int i = 0; i < n; i++) {
-		 sum += arr[i];
+		arr[i] = minRand + rand() % (maxRand - minRand);
+		arr[i] /= 100;
 	}
-	cout << "сума масива = " << sum << endl;
 }
-void Avg(int arr[], const int n) {
+void FillRand(char arr[], const int n, int minRand, int maxRand)
+{
+	if (maxRand < minRand) {
+		char buffer = minRand;
+		minRand = maxRand;
+		maxRand = buffer;
+	}
+	minRand *= 100;
+	maxRand *= 100;
+	for (int i = 0; i < n; i++) {
+		arr[i] = minRand + rand() % (maxRand - minRand);
+		arr[i] /= 100;
+	}
+}
+
+void Print(const double arr[], const int n) {
+	for (int i = 0; i < n; i++){
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+void Print(const int arr[], const int n) {
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+void Print(const char arr[], const int n) {
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr[i] << tab;
+	}
+	cout << endl;
+}
+
+int Sum(const int arr[], const int n) {
 	int sum = 0;
 	for (int i = 0; i < n; i++) {
 		sum += arr[i];
-	}cout << "Средне арефметическое = " << (double)sum / n << endl;
+	}
+	return sum;
 }
-void minValueIn(int arr[], const int n){
-	int Min = arr[0];
+double Sum(const double arr[], const int n) {
+	int sum = 0;
 	for (int i = 0; i < n; i++) {
-		if (arr[i] < Min) Min = arr[i];
+		sum += arr[i];
 	}
-	cout << "Минемальный елемент = " << Min << endl;
+	return sum;	
 }
-void maxValueIn(int arr[], const int n) {
-	int Max=arr[0];
+char Sum(const char arr[], const int n) {
+	int sum = 0;
 	for (int i = 0; i < n; i++) {
-		if(arr[i] > Max) Max = arr[i];
+		sum += arr[i];
 	}
-	cout << "Максимальный елемент = " << Max << endl;
+	return sum;
 }
-void shiftLeft(int arr[], const int n, int number_of_shifts) {
-	for (int i = 0; i < number_of_shifts; i++) {
-		int buffer = arr[0];
-		for (int i = 0; i < n; i++) {
-			arr[i] = arr[i + 1];
-		}	arr[n - 1] = buffer;
-		for (int i = 0; i < n; i++)cout << arr[i] << "\t";
-		cout << endl;
+
+int AVG(const int arr[], const int n) {
+	return (double)Sum(arr, n) / n;
+}
+double AVG(const double arr[], const int n) {
+		return (double)Sum(arr, n) / n;
 	}
+char AVG(const char arr[], const int n) {
+	return (double)Sum(arr, n) / n;
+}
+
+int minValueIn(int arr[], const int n){
+	int min = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+}
+double minValueIn(double arr[], const int n) {
+	int min = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+}
+char minValueIn(char arr[], const int n) {
+	int min = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] < min)min = arr[i];
+	}
+	return min;
+}
+
+int maxValueIn(int arr[], const int n) {
+	int max = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+}
+double maxValueIn(double arr[], const int n) {
+	int max = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
+}
+char maxValueIn(char arr[], const int n) {
+	int max = arr[0];
+	for (int i = 0; i < n; i++) {
+		if (arr[i] > max)max = arr[i];
+	}
+	return max;
 }
