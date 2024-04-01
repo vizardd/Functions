@@ -29,12 +29,8 @@ int Sum(const int arr[ROWS][COLS], const int ROWS, const int COLS);
 double Sum(const double arr[ROWS][COLS], const int ROWS, const int COLS);
 char Sum(const char arr[ROWS][COLS], const int ROWS, const int COLS);
 
-int AVG(const int arr[], const int n);
 double AVG(const double arr[], const int n);
-char AVG(const char arr[], const int n);
-int AVG(const int arr[ROWS][COLS], const int ROWS, const int COLS);
 double AVG(const double arr[ROWS][COLS], const int ROWS, const int COLS);
-char AVG(const char arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(int arr[], const int n);
 double minValueIn(double arr[], const int n);
@@ -244,22 +240,10 @@ char Sum(const char arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return sum;
 }
 
-int AVG(const int arr[], const int n) {
-	return (double)Sum(arr, n) / n;
-}
 double AVG(const double arr[], const int n) {
 		return (double)Sum(arr, n) / n;
 	}
-char AVG(const char arr[], const int n) {
-	return (double)Sum(arr, n) / n;
-}
-int AVG(const int arr[ROWS][COLS], const int ROWS, const int COLS) {
-	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
-}
 double AVG(const double arr[ROWS][COLS], const int ROWS, const int COLS) {
-	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
-}
-char AVG(const char arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return (double)Sum(arr, ROWS, COLS) / (ROWS + COLS);
 }
 
