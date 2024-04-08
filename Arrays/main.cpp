@@ -29,8 +29,10 @@ int Sum(const int arr[ROWS][COLS], const int ROWS, const int COLS);
 double Sum(const double arr[ROWS][COLS], const int ROWS, const int COLS);
 char Sum(const char arr[ROWS][COLS], const int ROWS, const int COLS);
 
-double AVG(const int arr[], const int n);
-double AVG(const double arr[ROWS][COLS], const int ROWS, const int COLS);
+int AVG(int arr[], const int n);
+double AVG(double arr[], const int n);
+int AVG(int arr[ROWS][COLS], const int ROWS, const int COLS);
+double AVG(double arr[ROWS][COLS], const int ROWS, const int COLS);
 
 int minValueIn(int arr[], const int n);
 double minValueIn(double arr[], const int n);
@@ -46,6 +48,19 @@ int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
 double maxValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
 char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
+void ShiftLeft(int arr[], const int n, const int number_of_sift);
+void ShiftLeft(double arr[], const int n, const int number_of_sift);
+void ShiftLeft(char arr[], const int n, const int number_of_sift);
+void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+void ShiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+void ShiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+
+void ShiftRight(int arr[], const int n, const int number_of_sift);
+void ShiftRight(double arr[], const int n, const int number_of_sift);
+void ShiftRight(char arr[], const int n, const int number_of_sift);
+void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
 void main() {
 	setlocale(LC_ALL, "");
 	const int I_SIZE = 5;
@@ -62,9 +77,14 @@ void main() {
 	cout << "Средне арефметическое элементов масива: " << AVG(i_arr, I_SIZE) << endl;
 	cout << "Минелальное значение масива :" << minValueIn(i_arr, I_SIZE)<<endl;
 	cout << "Максимальный елемент масива: " << maxValueIn(i_arr, I_SIZE)<<endl;
+	int number_of_shifts;
+	cout << "Введете количество сдвигов: "; cin >> number_of_shifts;
+	//ShiftLeft(i_arr, I_SIZE, number_of_shifts);
+	ShiftRight(i_arr, I_SIZE, number_of_shifts);
+	Print(i_arr, I_SIZE);
 	cout << delimeter << endl;
 
-	int number_of_shifts;
+	
 	const int D_SIZE = 8;
 	double d_arr[D_SIZE];
 	FillRand(d_arr, D_SIZE);
@@ -74,14 +94,17 @@ void main() {
 
 	const int ROWS = 3;
 	const int COLS = 4;
-	double i_arr_2[ROWS][COLS];
+	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
 	cout << "Сума елементов масива: " << Sum(i_arr_2, ROWS,COLS) << endl;
 	cout << "Средне арефметическое элементов масива: " << AVG(i_arr_2, ROWS,COLS) << endl;
 	cout << "Минелальное значение масива :" << minValueIn(i_arr_2, ROWS,COLS) << endl;
 	cout << "Максимальный елемент масива: " << maxValueIn(i_arr_2, ROWS,COLS) << endl;
-	cout << delimeter << endl;  
+	cout << "Введете количество сдвигов: "; cin >> number_of_shifts;
+	//ShiftLeft(i_arr_2, ROWS, COLS, number_of_shifts);
+	ShiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
+	Print(i_arr_2, ROWS, COLS);
 }
 void FillRand(int arr[], const int n, int minRand, int maxRand) {
 	if (maxRand < minRand) {
@@ -240,10 +263,16 @@ char Sum(const char arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return sum;
 }
 
-double AVG(const int arr[], const int n) {
+int AVG(int arr[], const int n) {
+	return (double)Sum(arr, n) / n;
+}
+double AVG(double arr[], const int n) {
 		return (double)Sum(arr, n) / n;
 	}
-double AVG(const int arr[ROWS][COLS], const int ROWS, const int COLS) {
+int AVG(int arr[ROWS][COLS], const int ROWS, const int COLS) {
+	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
+}
+double AVG(double arr[ROWS][COLS], const int ROWS, const int COLS) {
 	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
 }
 
@@ -343,4 +372,105 @@ char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS) {
 		}
 	}
 	return max;
+}
+
+void ShiftLeft(int arr[], const int n, const int number_of_sift) {
+	for (int i = 0; i < number_of_sift; i++) {
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++)
+		{
+			arr[i - 1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+}
+void ShiftLeft(double arr[], const int n, const int number_of_sift) {
+	for (int i = 0; i < number_of_sift; i++) {
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++)
+		{
+			arr[i - 1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+}
+void ShiftLeft(char arr[], const int n, const int number_of_sift) {
+	for (int i = 0; i < number_of_sift; i++) {
+		int buffer = arr[0];
+		for (int i = 0; i < n; i++)
+		{
+			arr[i - 1] = arr[i];
+		}
+		arr[n - 1] = buffer;
+	}
+}
+void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+		/*for (int i = 0; i < ROWS; i++)
+		{
+			ShiftLeft(arr[i], COLS, number_of_sift);
+		}*/
+	for (int i = 0; i < number_of_sift; i++) {
+		int buffer = arr[0][0];
+		for (int i = 0; i < ROWS; i++) {
+			for (int j = 0; j < COLS; j++)
+			{
+				arr[i][j-1] = arr[i][j];
+			}
+			if (i < ROWS - 1)arr[i][COLS - 1] = arr[i + 1][0];
+		}
+		arr[ROWS - 1][COLS - 1]=buffer;
+	}
+}
+void ShiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+	/*for (int i = 0; i < ROWS; i++)
+	{
+		ShiftLeft(arr[i], COLS, number_of_sift);
+	}*/
+	for (int i = 0; i < number_of_sift; i++) {
+		double buffer = arr[0][0];
+		for (int i = 0; i < ROWS; i++) {
+			for (int j = 0; j < COLS; j++)
+			{
+				arr[i][j - 1] = arr[i][j];
+			}
+			if (i < ROWS - 1)arr[i][COLS - 1] = arr[i + 1][0];
+		}
+		arr[ROWS - 1][COLS - 1] = buffer;
+	}
+}
+void ShiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+	/*for (int i = 0; i < ROWS; i++)
+	{
+		ShiftLeft(arr[i], COLS, number_of_sift);
+	}*/
+	for (int i = 0; i < number_of_sift; i++) {
+		char buffer = arr[0][0];
+		for (int i = 0; i < ROWS; i++) {
+			for (int j = 0; j < COLS; j++)
+			{
+				arr[i][j - 1] = arr[i][j];
+			}
+			if (i < ROWS - 1)arr[i][COLS - 1] = arr[i + 1][0];
+		}
+		arr[ROWS - 1][COLS - 1] = buffer;
+	}
+}
+
+void ShiftRight(int arr[], const int n, const int number_of_sift) {
+	ShiftLeft(arr, n, n - number_of_sift);
+}
+void ShiftRight(double arr[], const int n, const int number_of_sift) {
+	ShiftLeft(arr, n, n - number_of_sift);
+}
+void ShiftRight(char arr[], const int n, const int number_of_sift) {
+	ShiftLeft(arr, n, n - number_of_sift);
+}
+void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+	ShiftLeft(arr, ROWS, COLS, ROWS * COLS - number_of_sift);
+}
+void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+	ShiftLeft(arr, ROWS, COLS, ROWS * COLS - number_of_sift);
+}
+void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
+	ShiftLeft(arr, ROWS, COLS, ROWS * COLS - number_of_sift);
 }
