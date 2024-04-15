@@ -127,7 +127,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FIllRand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Print.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AVG.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="FillRand.h" />
+    <ClInclude Include="maxValueIn.h" />
+    <ClInclude Include="minValueIn.h" />
+    <ClInclude Include="Print.h" />
+    <ClInclude Include="ShiftLeft.h" />
+    <ClInclude Include="ShiftRight.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Sum.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

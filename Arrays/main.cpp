@@ -1,66 +1,13 @@
-﻿#include<iostream>
-using namespace std;
-
-#define tab "\t"
-#define delimeter "\n---------------------------------------------------------------------------\n"
-
-const int ROWS = 3;
-const int COLS = 4;
-
-void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
-void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
-void FillRand(char arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand = 0, int maxRend = 100);
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, double minRand = 0, double maxRend = 100);
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, char minRand = 0, char maxRend = 100);
-
-void Print(const int arr[], const int n);
-void Print(const double arr[], const int n);
-void Print(const char arr[], const int n);
-void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS);
-void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS);
-void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS);
-
-
-int Sum(const int arr[], const int n);
-double Sum(const double arr[], const int n);
-char Sum(const char arr[], const int n);
-int Sum(const int arr[ROWS][COLS], const int ROWS, const int COLS);
-double Sum(const double arr[ROWS][COLS], const int ROWS, const int COLS);
-char Sum(const char arr[ROWS][COLS], const int ROWS, const int COLS);
-
-int AVG(int arr[], const int n);
-double AVG(double arr[], const int n);
-int AVG(int arr[ROWS][COLS], const int ROWS, const int COLS);
-double AVG(double arr[ROWS][COLS], const int ROWS, const int COLS);
-
-int minValueIn(int arr[], const int n);
-double minValueIn(double arr[], const int n);
-char minValueIn(char arr[], const int n);
-int minValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
-double minValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
-char minValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
-int maxValueIn(int arr[], const int n);
-double maxValueIn(double arr[], const int n);
-char maxValueIn(char arr[], const int n);
-int maxValueIn(int arr[ROWS][COLS], const int ROWS, const int COLS);
-double maxValueIn(double arr[ROWS][COLS], const int ROWS, const int COLS);
-char maxValueIn(char arr[ROWS][COLS], const int ROWS, const int COLS);
-
-void ShiftLeft(int arr[], const int n, const int number_of_sift);
-void ShiftLeft(double arr[], const int n, const int number_of_sift);
-void ShiftLeft(char arr[], const int n, const int number_of_sift);
-void ShiftLeft(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
-void ShiftLeft(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
-void ShiftLeft(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
-
-void ShiftRight(int arr[], const int n, const int number_of_sift);
-void ShiftRight(double arr[], const int n, const int number_of_sift);
-void ShiftRight(char arr[], const int n, const int number_of_sift);
-void ShiftRight(int arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
-void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
-void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift);
+﻿#include"stdafx.h"
+#include"Constants.h"
+#include"FillRand.h"
+#include"Print.h"
+#include"Sum.h"
+#include"AVG.h"
+#include"minValueIn.h"
+#include"maxValueIn.h"
+#include"ShiftLeft.h"
+#include"ShiftRight.h"
 
 void Sort(int arr[], const int n);
 void Sort(double arr[], const int n);
@@ -149,8 +96,9 @@ void main() {
 	const int ROWS =3;
 	const int COLS = 4;
 	int i_arr_2[ROWS][COLS];
-	FillRand(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
+	//FillRand(i_arr_2, ROWS, COLS);
+	Unique(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS); cout << endl;
 	cout << "Сума елементов масива: " << Sum(i_arr_2, ROWS, COLS) << endl;
 	cout << "Средне арефметическое элементов масива: " << AVG(i_arr_2, ROWS, COLS) << endl;
 	cout << "Минелальное значение масива :" << minValueIn(i_arr_2, ROWS, COLS) << endl;
@@ -160,13 +108,11 @@ void main() {
 	//ShiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
 	//Print(i_arr_2, ROWS, COLS);
 	Sort(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);
-	Unique(i_arr_2, ROWS, COLS);
-	Print(i_arr_2, ROWS, COLS);cout << endl;
-
+	Print(i_arr_2, ROWS, COLS); cout << endl;
+	
 	double d_arr_2[ROWS][COLS];
 	FillRand(d_arr_2, ROWS, COLS);
-	Print(d_arr_2, ROWS, COLS);
+	Print(d_arr_2, ROWS, COLS); cout << endl;
 	cout << "Сума елементов масива: " << Sum(d_arr_2, ROWS, COLS) << endl;
 	cout << "Средне арефметическое элементов масива: " << AVG(d_arr_2, ROWS, COLS) << endl;
 	cout << "Минелальное значение масива :" << minValueIn(d_arr_2, ROWS, COLS) << endl;
@@ -176,12 +122,12 @@ void main() {
 	//ShiftRight(d_arr_2, ROWS, COLS, number_of_shifts);
 	//Print(d_arr_2, ROWS, COLS);
 	Sort(d_arr_2, ROWS, COLS);
-	Print(d_arr_2, ROWS, COLS);
+	Print(d_arr_2, ROWS, COLS); cout << endl;
 	cout << delimeter << endl;
 
 	char c_arr_2[ROWS][COLS];
 	FillRand(c_arr_2, ROWS, COLS);
-	Print(c_arr_2, ROWS, COLS);
+	Print(c_arr_2, ROWS, COLS); cout << endl;
 	cout << "Сума елементов масива: " << Sum(c_arr_2, ROWS, COLS) << endl;
 	cout << "Средне арефметическое элементов масива: " << AVG(i_arr_2, ROWS, COLS) << endl;
 	cout << "Минелальное значение масива :" << minValueIn(c_arr_2, ROWS, COLS) << endl;
@@ -191,111 +137,7 @@ void main() {
 	//ShiftRight(i_arr_2, ROWS, COLS, number_of_shifts);
 	//Print(i_arr_2, ROWS, COLS);
 	Sort(c_arr_2, ROWS, COLS);
-	Print(c_arr_2, ROWS, COLS);
-}
-void FillRand(int arr[], const int n, int minRand, int maxRand) {
-	if (maxRand < minRand) {
-		int buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	for (int i = 0; i < n; i++) {
-		arr[i] = minRand + rand() % (maxRand - minRand);
-	}
-}
-void FillRand(double arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand) {
-		double buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++) {
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(char arr[], const int n, int minRand, int maxRand)
-{
-	if (maxRand < minRand) {
-		char buffer = minRand;
-		minRand = maxRand;
-		maxRand = buffer;
-	}
-	minRand *= 100;
-	maxRand *= 100;
-	for (int i = 0; i < n; i++) {
-		arr[i] = minRand + rand() % (maxRand - minRand);
-		arr[i] /= 100;
-	}
-}
-void FillRand(int arr[ROWS][COLS], const int ROWS, const int COLS, int minRand, int maxRend) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(double arr[ROWS][COLS], const int ROWS, const int COLS, double minRand, double maxRend) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-void FillRand(char arr[ROWS][COLS], const int ROWS, const int COLS, char minRand, char maxRend) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			arr[i][j] = rand() % 100;
-		}
-	}
-}
-
-void Print(const double arr[], const int n) {
-	for (int i = 0; i < n; i++) {
-		cout << arr[i] << tab;
-	}
-	cout << endl;
-}
-void Print(const int arr[], const int n) {
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;
-}
-void Print(const char arr[], const int n) {
-	for (int i = 0; i < n; i++)
-	{
-		cout << arr[i] << tab;
-	}
-	cout << endl;
-}
-void Print(const int arr[ROWS][COLS], const int ROWS, const int COLS) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			cout << arr[i][j] << tab;
-		}
-		cout << endl;
-	}
-}
-void Print(const double arr[ROWS][COLS], const int ROWS, const int COLS) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			cout << arr[i][j] << tab;
-		}
-		cout << endl;
-	}
-}
-void Print(const char arr[ROWS][COLS], const int ROWS, const int COLS) {
-	for (int i = 0; i < ROWS; i++) {
-		for (int j = 0; j < COLS; j++) {
-			cout << arr[i][j] << tab;
-		}
-		cout << endl;
-	}
+	Print(c_arr_2, ROWS, COLS); cout << endl;
 }
 
 int Sum(const int arr[], const int n) {
@@ -561,6 +403,7 @@ void ShiftRight(double arr[ROWS][COLS], const int ROWS, const int COLS, int numb
 void ShiftRight(char arr[ROWS][COLS], const int ROWS, const int COLS, int number_of_sift) {
 	ShiftLeft(arr, ROWS, COLS, ROWS * COLS - number_of_sift);
 }
+
 void Sort(int arr[], const int n) {
 	for (int i = 0; i < n; i++)
 	{
@@ -685,7 +528,7 @@ void Unique(int arr[], const int n) {
 void Unique(int arr[ROWS][COLS], const int ROWS, const int COLS) {
 	for (int i = 0; i < ROWS; i++)
 	{
-		for (int j = 0; i < COLS; j++) {
+		for (int j = 0; j < COLS; j++) {
 			bool unique;
 			do
 			{
