@@ -1,6 +1,6 @@
 #pragma once
 #include"Constants.h"
-
+#include"stdafx.h"
 int minValueIn(int arr[], const int n);
 double minValueIn(double arr[], const int n);
 char minValueIn(char arr[], const int n);

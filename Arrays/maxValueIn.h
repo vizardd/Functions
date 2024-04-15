@@ -1,6 +1,6 @@
 #pragma once
 #include"Constants.h"
-
+#include"stdafx.h"
 int maxValueIn(int arr[], const int n);
 double maxValueIn(double arr[], const int n);
 char maxValueIn(char arr[], const int n);

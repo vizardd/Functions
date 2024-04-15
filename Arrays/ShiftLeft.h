@@ -1,5 +1,6 @@
 #pragma once
 #include"Constants.h"
+#include"stdafx.h"
 void ShiftLeft(int arr[], const int n, const int number_of_sift);
 void ShiftLeft(double arr[], const int n, const int number_of_sift);
 void ShiftLeft(char arr[], const int n, const int number_of_sift);
