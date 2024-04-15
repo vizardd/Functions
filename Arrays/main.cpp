@@ -4,8 +4,8 @@ using namespace std;
 #define tab "\t"
 #define delimeter "\n---------------------------------------------------------------------------\n"
 
-const int ROWS = 10;
-const int COLS = 10;
+const int ROWS = 3;
+const int COLS = 4;
 
 void FillRand(int arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
 void FillRand(double arr[], const int n, int minRand = 0, int maxRand = 100);//заполняем массив случайными числами 
@@ -69,9 +69,12 @@ void Sort(int arr[ROWS][COLS], const int ROWS, const int COLS);
 void Sort(double arr[ROWS][COLS], const int ROWS, const int COLS);
 void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS);
 
+void Unique(int arr[], const int n);
+void Unique(int arr[ROWS][COLS], const int ROWS, const int COLS);
+
 void main() {
 	setlocale(LC_ALL, "");
-	const int I_SIZE = 5;
+	const int I_SIZE = 10;
 	int i_arr[I_SIZE];
 	int minRand, maxRand;
 	///*do//{
@@ -79,7 +82,8 @@ void main() {
 	//	cout << "Введите Максимально возможное случайное число: "; cin >> maxRand;
 	//	if (minRand == maxRand)cout << "пределы диапазона не должны совпадать" << endl;
 	//} while (minRand==maxRand);*/
-	FillRand(i_arr, I_SIZE);
+	//FillRand(i_arr, I_SIZE);
+	Unique(i_arr, I_SIZE);
 	Print(i_arr, I_SIZE);
 	Sort(i_arr, I_SIZE);
 	Print(i_arr, I_SIZE); cout << endl;
@@ -90,6 +94,8 @@ void main() {
 	int number_of_shifts;
 	//cout << "Введете количество сдвигов: "; cin >> number_of_shifts; cout << endl;
 	//ShiftLeft(i_arr, I_SIZE, number_of_shifts);
+
+
 	cout << delimeter << endl;
 
 	//ShiftRight(i_arr, I_SIZE, number_of_shifts);
@@ -140,8 +146,8 @@ void main() {
 
 	cout << delimeter << endl;
 
-	const int ROWS = 10;
-	const int COLS = 10;
+	const int ROWS =3;
+	const int COLS = 4;
 	int i_arr_2[ROWS][COLS];
 	FillRand(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
@@ -155,7 +161,8 @@ void main() {
 	//Print(i_arr_2, ROWS, COLS);
 	Sort(i_arr_2, ROWS, COLS);
 	Print(i_arr_2, ROWS, COLS);
-	cout << delimeter << endl;
+	Unique(i_arr_2, ROWS, COLS);
+	Print(i_arr_2, ROWS, COLS);cout << endl;
 
 	double d_arr_2[ROWS][COLS];
 	FillRand(d_arr_2, ROWS, COLS);
@@ -654,5 +661,46 @@ void Sort(char arr[ROWS][COLS], const int ROWS, const int COLS) {
 				}
 			}
 		}
+	}
+}
+
+void Unique(int arr[], const int n) {
+	for (int i = 0; i < n; i++) {
+		bool unique;
+		do
+		{
+		arr[i] = rand() % n;
+		unique = true;
+		for (int j = 0; j < i; j++)
+		{
+			if (arr[i] == arr[j]) {
+				unique = false;
+				break;
+			}
+		}
+		} while (!unique);
+		
+	}
+}
+void Unique(int arr[ROWS][COLS], const int ROWS, const int COLS) {
+	for (int i = 0; i < ROWS; i++)
+	{
+		for (int j = 0; i < COLS; j++) {
+			bool unique;
+			do
+			{
+				arr[i][j] = rand() % (ROWS * COLS);
+				unique = true;
+				for (int k = 0; k <= i; k++) {
+					for (int l = 0; l < (k==i?j:COLS); l++) {
+						if (arr[i][j] == arr[k][l]) {
+							unique = false;
+							break;
+						}
+					}if (!unique)break;
+				}
+			} while (!unique);
+		}
+
 	}
 }
