@@ -78,7 +78,7 @@ void main() {
 	Print(i_arr, I_SIZE);
 
 	cout << delimiter << endl;
-
+	 
 	const int D_SIZE = 8;
 	double d_arr[D_SIZE];
 	FillRand(d_arr, D_SIZE);
