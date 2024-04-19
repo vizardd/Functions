@@ -188,8 +188,7 @@ T AVG(const T arr[ROWS][COLS], const int ROWS, const int COLS)
 {
 	return (double)Sum(arr, ROWS, COLS) / (ROWS * COLS);
 }
-template<typename T>
-T minValueIn(const T arr[], const int n)
+template<typename T>T minValueIn(const T arr[], const int n)
 {
 	T min = arr[0];
 	for (int i = 0; i < n; i++)
